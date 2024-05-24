@@ -2,13 +2,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-const bcrypt = require('bcryptjs');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 const app = express();
 const authRoutes = require('./routes/auth');
+const authenticateToken = require('./middlewares/authenticateToken');
 
 // Configura el middleware para parsear JSON y datos URL codificados
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(express.static('public'));
 
 // Configura la conexión a la base de datos MySQL
@@ -27,6 +30,30 @@ db.connect(err => {
 
 // Usa las rutas de autenticación, pasando la conexión de base de datos
 app.use('/auth', authRoutes(db));
+
+// Ejemplo de ruta protegida
+app.get('/protected', authenticateToken, (req, res) => {
+    res.send('This is a protected route');
+});
+
+// Verificar si hay una cookie de token válida al cargar cualquier página protegida
+app.use((req, res, next) => {
+    if (req.path !== '/login.html' && req.path !== '/' && req.path !== '/auth/login') {
+        const token = req.cookies.token;
+        if (!token) {
+            return res.redirect('/login.html');
+        }
+
+        jwt.verify(token, 'your_secret_key_here', (err, user) => {
+            if (err) {
+                return res.redirect('/login.html');
+            }
+            next();
+        });
+    } else {
+        next();
+    }
+});
 
 // Define el puerto en el que el servidor escuchará las solicitudes
 const PORT = process.env.PORT || 3000;
