@@ -1,0 +1,122 @@
+.list-group-item {
+    border: none;
+}
+
+.list-group-item .row > div {
+    padding: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.list-group-item .row > div:last-child {
+    border-right: none;
+}
+
+.list-group-item .row > div:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.list-group-item .row > div:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.list-group-item .row > div:last-child {
+    border-right: none;
+}
+
+.list-group-item .row > div:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.list-group-item .row > div:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.list-group-item .row > div:first-child i {
+    cursor: pointer;
+}
+
+.list-group-item-secondary .row > div {
+    font-weight: bold;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.list-group-item .row > div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-group-item .row > div:first-child {
+    min-width: 80px;
+}
+
+.list-group-item .row > div:nth-child(2) {
+    min-width: 150px;
+}
+
+.list-group-item .row > div:nth-child(3) {
+    min-width: 150px;
+}
+
+.list-group-item .row > div:nth-child(4) {
+    min-width: 150px;
+}
+
+.list-group-item .row > div:nth-child(5) {
+    min-width: 150px;
+}
+
+.list-group-item .row > div:nth-child(6) {
+    min-width: 100px;
+}
+
+.modal-body p {
+    margin: 0.5rem 0;
+}
+
+.modal-body {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.modal-body p strong {
+    font-weight: bold;
+}
+
+#employeeModal .modal-content {
+    border-radius: 0.5rem;
+}
+
+#employeeModal .modal-header {
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+#employeeModal .modal-footer {
+    background-color: #f8f9fa;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-item div {
+    flex: 1;
+    padding: 5px;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
