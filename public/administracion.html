@@ -4,20 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración</title>
-    <link rel="stylesheet" href="sistema.css">
+    <link rel="stylesheet" href="administracion.css">
 </head>
 <body>
-    <header>
-        <!-- Código del encabezado igual al de la página principal -->
-    </header>
-    <main>
-        <section>
-            <h2>Administración</h2>
-            <!-- Contenido de la página de Administración -->
-        </section>
-    </main>
-    <footer>
-        <!-- Código del pie de página igual al de la página principal -->
-    </footer>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="sistema.html">Inicio</a></li>
+                    <li><a href="gestion_empleados.html">Gestión de empleados</a></li>
+                    <li><a href="procesamiento_nomina.html">Procesamiento de Nóminas</a></li>
+                    <li><a href="administracion.html">Administración</a></li>
+                    <li><a href="acercaDe.html">Acerca de</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <img src="logo.png" alt="Logo UMG">
+                <button class="logout">Cerrar sesión</button>
+            </div>
+        </header>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre de Usuario</th>
+                <th>ID del Empleado</th>
+            </tr>
+        </thead>
+        <tbody id="usuariosTableBody">
+            <!-- Aquí se insertarán dinámicamente las filas de la tabla -->
+        </tbody>
+    </table>
+    <div class="pagination">
+        <button>&lt;&lt;</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>10</button>
+        <button>&gt;&gt;</button>
+    </div>
+    <button class="create-btn">Crear</button>
+    <script>
+        async function fetchAndRenderUsuarios() {
+            try {
+                const response = await fetch('/api/usuarios', {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                renderUsuarios(data);
+            } catch (error) {
+                console.error('Error fetching usuarios:', error);
+            }
+        }
+
+        function renderUsuarios(data) {
+            const usuariosTableBody = document.getElementById('usuariosTableBody');
+            usuariosTableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevas filas
+
+            data.forEach(usuario => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${usuario.id}</td>
+                    <td>${usuario.nombre_usuario}</td>
+                    <td>${usuario.id_empleado}</td>
+                `;
+                usuariosTableBody.appendChild(tr);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchAndRenderUsuarios);
+    </script>
 </body>
 </html>

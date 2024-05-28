@@ -2,22 +2,92 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Empleados</title>
-    <link rel="stylesheet" href="sistema.css">
+    <title>Sistema de RRHH - Empleados</title>
+    <link rel="stylesheet" href="gestion_empleados.css">
+    <script>
+        // Función para obtener los datos de los empleados y renderizar la tabla
+        async function fetchAndRenderEmpleados() {
+            try {
+                const response = await fetch('/api/empleados', {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                renderTable(data);
+            } catch (error) {
+                console.error('Error fetching empleados:', error);
+            }
+        }
+
+        // Función para renderizar la tabla con los datos de los empleados
+        function renderTable(data) {
+            const tableContainer = document.querySelector('.table-container');
+            const table = document.createElement('table');
+
+            // Crear el encabezado de la tabla
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            Object.keys(data[0]).forEach(key => {
+                const th = document.createElement('th');
+                th.textContent = key;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Crear el cuerpo de la tabla
+            const tbody = document.createElement('tbody');
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                Object.values(row).forEach(value => {
+                    const td = document.createElement('td');
+                    td.textContent = value;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+
+            // Limpiar el contenedor y agregar la nueva tabla
+            tableContainer.innerHTML = '';
+            tableContainer.appendChild(table);
+        }
+
+        // Llamar a la función para obtener y renderizar los datos cuando se cargue la página
+        document.addEventListener('DOMContentLoaded', fetchAndRenderEmpleados);
+    </script>
 </head>
 <body>
     <header>
-        <!-- Código del encabezado igual al de la página principal -->
+        <nav>
+            <a href="sistema.html">Inicio</a>
+            <a href="gestion_empleados.html">Gestión de empleados</a>
+            <a href="procesamiento_nomina.html">Procesamiento de Nóminas</a>
+            <a href="administracion.html">Administración</a>
+            <a href="acercaDe.html">Acerca de</a>
+        </nav>
+        <div class="right-section">
+            <img src="logo.png" alt="Logo UMG">
+            <button id="logoutBtn">Cerrar sesión</button>
+        </div>
     </header>
-    <main>
-        <section>
-            <h2>Gestión de Empleados</h2>
-            <!-- Contenido de la página de Gestión de Empleados -->
-        </section>
-    </main>
-    <footer>
-        <!-- Código del pie de página igual al de la página principal -->
-    </footer>
+
+    <div class="content">
+        <h1>Proyecto - Análisis de Sistemas I</h1>
+        <h2>Empleados</h2>
+        <a class="back-button" href="#">&larr;</a>
+        <div class="search-container">
+            <input type="text" placeholder="Buscar">
+            <a href="https://www.ejemplo.com/buscar"><button>Buscar</button></a>
+            <a href="https://www.ejemplo.com/cancelar"><button>Cancelar</button></a>
+            <a href="../creacion de empleados/creacion.html"><button>Crear</button></a>
+        </div>
+
+        <div class="table-container">
+            <!-- La tabla se insertará aquí dinámicamente -->
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

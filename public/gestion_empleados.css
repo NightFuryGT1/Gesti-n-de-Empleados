@@ -1,0 +1,159 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+header .right-section {
+    display: flex;
+    align-items: center;
+}
+
+header .right-section img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+header .right-section button {
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header .right-section button:hover {
+    background-color: #c9302c;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-container table, th, td {
+    border: 1px solid #ccc;
+}
+
+.table-container th, .table-container td {
+    padding: 10px;
+    text-align: left;
+}
+
+.table-container th {
+    background-color: #f9f9f9;
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-container tr:hover {
+    background-color: #ddd;
+}
+
+.table-container .actions img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    color: black;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-container input[type="text"] {
+    padding: 5px;
+    width: 200px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container button {
+    padding: 5px 10px;
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #31b0d5;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    background-color: #5bc0de;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #31b0d5;
+}

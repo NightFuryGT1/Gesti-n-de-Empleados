@@ -31,6 +31,45 @@ db.connect(err => {
 // Usa las rutas de autenticación, pasando la conexión de base de datos
 app.use('/auth', authRoutes(db));
 
+// Ruta para obtener los datos de los empleados
+app.get('/api/empleados', authenticateToken, (req, res) => {
+    const query = 'SELECT * FROM empleados';
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('Internal server error');
+        }
+        res.json(results);
+    });
+});
+
+// Ruta para obtener los datos de los usuarios
+app.get('/api/usuarios', authenticateToken, (req, res) => {
+    const query = 'SELECT * FROM usuarios';
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('Internal server error');
+        }
+        res.json(results);
+    });
+});
+// server.js
+
+// Ruta para buscar empleados por nombre
+app.get('/api/empleados/buscar', authenticateToken, (req, res) => {
+    const { nombre } = req.query;
+    const query = 'SELECT * FROM empleados WHERE nombres LIKE ?';
+    db.query(query, [`%${nombre}%`], (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('Internal server error');
+        }
+        res.json(results);
+    });
+});
+
+
 // Ejemplo de ruta protegida
 app.get('/protected', authenticateToken, (req, res) => {
     res.send('This is a protected route');

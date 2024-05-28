@@ -2,75 +2,86 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto - Análisis de Sistemas I</title>
-    <link rel="stylesheet" href="sistema.css">
+    <title>Sistema de RRHH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+        header nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        header .right-section {
+            display: flex;
+            align-items: center;
+        }
+        header .right-section img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        header .right-section button {
+            padding: 5px 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        header .right-section button:hover {
+            background-color: #c9302c;
+        }
+        .content {
+            padding: 50px;
+        }
+        .content h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="gestion_empleados.html">Gestión de empleados</a></li>
-                <li><a href="procesamiento_nomina.html">Procesamiento de Nóminas</a></li>
-                <li><a href="administracion.html">Administración</a></li>
-                <li><a href="acerca_de.html">Acerca de</a></li>
-            </ul>
+            <a href="sistema.html">Inicio</a>
+            <a href="gestion_empleados.html".html">Gestión de empleados</a>
+            <a href="procesamiento_nomina.html">Procesamiento de Nóminas</a>
+            <a href="administracion.html">Administración</a>
+            <a href="acercaDe.html">Acerca de</a>
         </nav>
-        <div class="search-bar">
-            <input type="search" placeholder="Buscar">
-            <button>Buscar</button>
-            <button>Cancelar</button>
-            <span class="icon-search"></span>
+        <div class="right-section">
+            <img src="logo.png" alt="Logo UMG">
+            <button>Cerrar sesión</button>
         </div>
     </header>
-    <main>
-        <section class="employees">
-            <h2>Empleados</h2>
-            <div class="pagination">
-                <button>&lt;</button>
-                <button>&lt;&lt;</button>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>...</span>
-                <button>&gt;&gt;</button>
-                <button>&gt;</button>
-            </div>
-            <div class="employee-list">
-                <div class="employee-header">
-                    <span>Nombre</span>
-                    <span>Cargo</span>
-                    <span>Salario</span>
-                    <span>Fecha Ingreso</span>
-                    <span>Teléfono</span>
-                    <span>Dirección</span>
-                </div>
-                <div class="employee-data">
-                    <div class="employee-row">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <!-- Aquí iría el contenido dinámico de la lista de empleados -->
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Logo UMG</p>
-        <button id="logoutBtn">Cerrar sesión</button>
-        <button>Crear</button>
-        <button>Opciones</button>
-        <div class="footer-icons">
-            <span class="icon-facebook"></span>
-            <span class="icon-twitter"></span>
-            <span class="icon-instagram"></span>
+    <div class="content">
+        <h1>Sistema de nóminas</h1>
+        <div class="footer">
+            <p>Ingeniería en Sistemas de Información</p>
+            <p>Centro Universitario: Chiquimulilla, Santa Rosa.</p>
+            <p>Semestre 1 - 2024</p>
         </div>
-    </footer>
-  
+    </div>
 </body>
 </html>
